@@ -1,3 +1,13 @@
+coli:
+    resource: "@ColiBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+colishow:
+    resource: "@ColiBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

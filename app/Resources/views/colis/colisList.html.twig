@@ -1,0 +1,89 @@
+
+
+<html >
+<head>
+
+    <title>list colis</title>
+    <link rel="stylesheet" href="{{ asset('bootstrap-4.0.0-dist/css/bootstrap.min.css') }}">
+    <style type="text/css">
+        .container {
+            margin-top: 100px;
+        }
+
+        .card {
+            width: 300px;
+        }
+
+        .card:hover {
+            -webkit-transform: scale(1.05);
+            -moz-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+            -o-transform: scale(1.05);
+            transform: scale(1.05);
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            -ms-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+        }
+
+        .list-group-item {
+            border: 0px;
+            padding: 5px;
+        }
+
+        .price {
+            font-size: 72px;
+        }
+
+        .currency {
+            position: relative;
+            font-size: 25px;
+            top: -31px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+       {% set  colNum = 1%}
+        {% for coli in colis %}
+             {% if colNum == 1 %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <h2 class="price"><span class="currency">$</span>{{ coli.label }}</h2>
+                        </div>
+                <div class="card-body text-center">
+                    <div class="card-title">
+                        <h2>{{ coli.label }}</h2>
+                    </div>
+                    <ul class="list-group">
+
+                       <li class="list-group-item">depart:{{ coli.depart }}</li>
+                        <li class="list-group-item">destination: {{ coli.destination }}</li>
+                        <li class="list-group-item">date limit: {{ coli.dateLimit  }}</li>
+                        <li class="list-group-item">description: {{ coli.description }}</li>
+                        <li class="list-group-item">reward{{ coli.reward }}</li>
+                    </ul>
+                    <br>
+
+                </div>
+            </div>
+                    </div>
+
+                    {% endif %}
+
+                    {% endfor %}
+        {% if colNum == 3 %}
+        </div><br>;
+    {% set colNum = 0 %}
+    {% else  %}
+    {% set colNum = colNum + 1 %}
+    {% endif %}
+
+
+</div>
+</body>
+</html>

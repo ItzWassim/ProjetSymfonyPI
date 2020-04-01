@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Colis list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Depart</th>
+                <th>Destination</th>
+                <th>Datelimit</th>
+                <th>Label</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Reward</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for coli in colis %}
+            <tr>
+                <td><a href="{{ path('colis_show', { 'id': coli.id }) }}">{{ coli.id }}</a></td>
+                <td>{{ coli.depart }}</td>
+                <td>{{ coli.destination }}</td>
+                <td>{{ coli.dateLimit }}</td>
+                <td>{{ coli.label }}</td>
+                <td>{{ coli.description }}</td>
+                <td>{{ coli.image }}</td>
+                <td>{{ coli.reward }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('colis_show', { 'id': coli.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('colis_edit', { 'id': coli.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('colis_new') }}">Create a new coli</a>
+        </li>
+    </ul>
+{% endblock %}
